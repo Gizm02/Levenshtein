@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1416162178 source:d:\documents\cpp_projects\levenshteindistance\main.cpp
+	<iomanip>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<vector>
+	<stdlib.h>
+	"Levenshtein.h"
+
+1416161271 d:\documents\cpp_projects\levenshteindistance\include\levenshtein.h
+	<vector>
+	<string>
+
