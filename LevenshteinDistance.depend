@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1416233783 source:d:\documents\cpp_projects\levenshteindistance\main.cpp
+1416260575 source:d:\documents\cpp_projects\levenshteindistance\main.cpp
 	<iomanip>
 	<iostream>
 	<fstream>
@@ -9,12 +9,11 @@
 	<stdlib.h>
 	"Levenshtein.h"
 
-1416234993 d:\documents\cpp_projects\levenshteindistance\include\levenshtein.h
-	<vector>
-	<string>
-	<memory>
+1416261245 d:\documents\cpp_projects\levenshteindistance\include\levenshtein.h
+	"Typedef.h"
+	<iostream>
 
-1416233761 source:d:\documents\cpp_projects\levenshteindistance\src\levenshtein.cpp
+1416254660 source:d:\documents\cpp_projects\levenshteindistance\src\levenshtein.cpp
 	"Levenshtein.h"
 	<climits>
 
@@ -37,6 +36,11 @@
 	"Levenshtein.h"
 
 1416248379 /home/kenzo/github/Levenshtein/include/Typedef.h
+	<vector>
+	<string>
+	<memory>
+
+1416254312 d:\documents\cpp_projects\levenshteindistance\include\typedef.h
 	<vector>
 	<string>
 	<memory>

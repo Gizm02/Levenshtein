@@ -29,7 +29,7 @@ Cost Levenshtein::getCost(const EditOperation& type) {
         case INS: return insertionCost;
         case SUB: return substitutionCost;
         case NO: return 0;
-        default: return INVALID_INPUT;/**< Case if no valid input was given. */
+        default: std::cerr<<"This value is not a valid parameter value for Levenshtein::getCost! "<<std::endl; return INVALID_INPUT;/**< Case if no valid input was given. */
     }
 }
 
@@ -66,6 +66,20 @@ Cost Levenshtein::getPreviousCost(const unsigned int i, const unsigned int j) {
 void Levenshtein::setSentences(const WordList& a, const WordList& b) {
     sentenceA=a;
     sentenceB=b;
+    update(a.size(),b.size());
+    std::cout<<"Updated the matrices "<<std::endl;
+}
+
+void Levenshtein::update(const unsigned int rows, const unsigned int columns) {
+            /// Matrices with |A| rows
+            distances.resize(rows);
+            edits.resize(rows);
+
+            /// And |B| columns.
+            for(int j=0;j<rows;j++) {
+                distances[j].resize(columns);
+                edits[j].resize(columns);
+            }
 }
 
 void Levenshtein::printDistanceMatrix() {
@@ -111,6 +125,7 @@ void Levenshtein::calculateDistance() {
     }
 
     Cost j=distances[0][0];
+
     for(size_t i=1;i<sentenceA.size();i++,j++) {
         distances[0][i]=j;
     }

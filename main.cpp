@@ -172,8 +172,8 @@ int main(int argc, char* argv[]){
             levenshtein.setSentences(spokenSentence,recSentence);
             levenshtein.calculateDistance();
             Alignment alignment;
-            unsigned int length = std::max(spokenSentence.size(),recSentence.size());
-            for(int i=0;i<length;i++) {
+            unsigned int length = std::min(spokenSentence.size(),recSentence.size());
+            for(int i=0;i<length;i++) {/**< Print the alignment for every two compared sentences here. */
                 alignment.push_back(AlignmentElement("", "HOW", SUB));
                 alignment.push_back(AlignmentElement("",      "LOW", INS));
             }

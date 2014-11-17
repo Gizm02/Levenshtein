@@ -47,8 +47,33 @@ class Levenshtein
          *
          */
         void setCost(const EditOperation& type, const Cost newCost);
+
+        /** \brief Returns the costs for a certain editing operation.
+         *
+         * \param type The editing operation.
+         * \return The costs for the editing operation type.
+         *
+         */
         Cost getCost(const EditOperation& type);
+
+        /** \brief Set an entry of the EditMatrix, i.e. store an edit operation in it.
+         *
+         * \param mtx The edit matrix.
+         * \param i The row coordinate in the matrix.
+         * \param j The column coordinate in the matrix.
+         * \param operation The edit operation supposed to be stored.
+         *
+         */
         void setEditOperation(EditMatrix& mtx,const unsigned int i, const unsigned int j, EditOperation operation);
+
+        /** \brief Retrieve the edit operation performed for a certain pair of words.
+         *
+         * \param mtx The edit matrix containing all editing operations for all pairs of words.
+         * \param i The row entry in the matrix.
+         * \param j The column entry in the matrix.
+         * \return The performed edit operations performed to translate word at position i to word at position j in the other sentence.
+         *
+         */
         EditOperation getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j);
         EditOperation determineEditOperation(const Word& a, const Word& b);
         Cost getPreviousCost(const unsigned int i, const unsigned int j);
@@ -57,6 +82,14 @@ class Levenshtein
         void printDistanceMatrix();
         void printEditMatrix();
         Cost getWER();
+
+        /** \brief This method updates the sizes of the distance and the edit matrices.
+         *
+         * \param
+         * \param
+         *
+         */
+        void update(const unsigned int rows, const unsigned int columns);/**< Reinitialize the cost and edit matrices. */
     protected:
     private:
         WordList& sentenceA, sentenceB;/**< Set of sentences to compare. */
