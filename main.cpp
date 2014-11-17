@@ -7,12 +7,13 @@
 #include <stdlib.h>
 #include "Levenshtein.h"
 
-#define DBG 1
+#define DBG 0
+
 
 // definition of data types
 ///typedef std::string Word;
 ///typedef std::vector<Word> WordList;
-using SentenceList=std::vector<WordList>;
+///using SentenceList=std::vector<WordList>;
 
 ///enum EditOperation {NO, SUB, INS, DEL};
 struct AlignmentElement {
@@ -156,13 +157,31 @@ int main(int argc, char* argv[]){
 }
 
     /*! spoken and recog contain the words that are read in. spoken[i] contains the i. sentence and spoken[i][j] the j. word
-    *   of the spoken text.
+    *   of the i. spoken text.
      */
-    /// ... <your code>
-    Levenshtein levenshtein(spoken,recog,1,1,1);
+
+
+    /// recog.size()==  #recognized sentences
+    /// spoken.size()==  #spoken sentences
+    /// recog[0].size()==   #recognized words of the first sentence
+
+
+    Levenshtein levenshtein(spoken[0],recog[0]);///Initiation with the first sentence of each spoken and recognized sentences.
     for(auto const& spokenSentence: spoken) {
         for(auto const& recSentence: recog) {
-            levenshtein.calculateDistance(spokenSentence,recSentence);
+            levenshtein.setSentences(spokenSentence,recSentence);
+            levenshtein.calculateDistance();
+            Alignment alignment;
+            unsigned int length = std::max(spokenSentence.size(),recSentence.size());
+            for(int i=0;i<length;i++) {
+                alignment.push_back(AlignmentElement("", "HOW", SUB));
+                alignment.push_back(AlignmentElement("",      "LOW", INS));
+            }
+            #if DBG>0
+                levenshtein.printDistanceMatrix();
+                levenshtein.printEditMatrix();
+            #endif
+            writeAlignment(alignment, std::cout);
         }
     }
     return 0;

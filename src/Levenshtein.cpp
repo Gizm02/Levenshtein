@@ -63,9 +63,47 @@ Cost Levenshtein::getPreviousCost(const unsigned int i, const unsigned int j) {
 }
 
 
-void Levenshtein::calculateDistance(const WordList& a, const WordList& b) {
+void Levenshtein::setSentences(const WordList& a, const WordList& b) {
+    sentenceA=a;
+    sentenceB=b;
+}
+
+void Levenshtein::printDistanceMatrix() {
+    for(int i=0;i<sentenceA.size();i++) {
+        for(int j=0;j<sentenceB.size();j++) {
+            std::cout<<" " << distances[i][j];
+        }
+        std::cout<<std::endl;
+    }
+}
+
+void Levenshtein::printEditMatrix() {
+    std::string output{""};
+    for(int i=0;i<sentenceA.size();i++) {
+        for(int j=0;j<sentenceB.size();j++) {
+            switch(distances[i][j]) {
+                case INS: output="INS";break;
+                case SUB: output="SUB";break;
+                case NO: output="NO";break;
+                case DEL: output="DEL";break;
+            }
+            std::cout<<" " << output;
+        }
+        std::cout<<std::endl;
+    }
+}
+
+
+Cost Levenshtein::getWER() {
+    return 0;
+}
+
+
+void Levenshtein::calculateDistance() {
+
+    std::cout << "Starting computing the distance matrix. Initial Part. "<<std::endl;
     /*******************Initialize the distance matrix/ default cases *****************************/
-    if(a[0].compare(b[0])!=0) {
+    if(sentenceA[0].compare(sentenceB[0])!=0) {
         distances[0][0]=1;
     }
     else {
@@ -73,18 +111,22 @@ void Levenshtein::calculateDistance(const WordList& a, const WordList& b) {
     }
 
     Cost j=distances[0][0];
-    for(size_t i=1;i<a.size();i++,j++) {
+    for(size_t i=1;i<sentenceA.size();i++,j++) {
         distances[0][i]=j;
     }
     j=distances[0][0];
-    for(size_t i=1;i<b.size();i++,j++) {
+    for(size_t i=1;i<sentenceB.size();i++,j++) {
         distances[i][0]=j;
     }
+
     /******************Start computing the non-trivial cases ***************************************/
-    for(unsigned int i=1;i<a.size();i++) {
-        for(unsigned int j=1;j<b.size();j++) {
-            edits[i][j]=determineEditOperation(a[i],b[j]);
-            distances[i][j]=(a[i]!=b[j])?getPreviousCost(i,j)+1:getPreviousCost(i,j);
+
+
+    std::cout<<"Computing the distances for the non-trivial cases now. "<<std::endl;
+    for(unsigned int i=1;i<sentenceA.size();i++) {
+        for(unsigned int j=1;j<sentenceB.size();j++) {
+            edits[i][j]=determineEditOperation(sentenceA[i],sentenceB[j]);
+            distances[i][j]=        (sentenceA[i]!=sentenceB[j])      ?       getPreviousCost(i,j)+1      :       getPreviousCost(i,j);
         }
     }
 }

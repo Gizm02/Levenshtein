@@ -6,19 +6,36 @@
 #ifndef LEVENSHTEIN_H
 #define LEVENSHTEIN_H
 
-
+#include <iostream>
 
 class Levenshtein
 {
 
     public:
-
-        Levenshtein(SentenceList& a, SentenceList& b):Levenshtein(a,b,1,1,1) {};
-        Levenshtein(SentenceList& a, SentenceList& b, Cost pen):Levenshtein(a,b,pen,pen,pen) {};
+        Levenshtein(WordList& a, WordList& b):Levenshtein(a,b,1,1,1) {};
+        Levenshtein(WordList& a, WordList& b, Cost pen):Levenshtein(a,b,pen,pen,pen) {};
 
         /**< This is the basic ctor of this class. */
-        Levenshtein(SentenceList& a, SentenceList& b, Cost subPen, Cost insPen, Cost delPen):sentenceA(a),sentenceB(b),substitutionCost(subPen),deletionCost(delPen),insertionCost(insPen) {
+        Levenshtein(WordList& a, WordList& b, Cost subPen, Cost insPen, Cost delPen):sentenceA(a),sentenceB(b),substitutionCost(subPen),deletionCost(delPen),insertionCost(insPen) {
+            std::cout << "Size of a is: "<<a.size()<<std::endl;
+            std::cout << "Size of b is: "<<b.size()<<std::endl;
 
+
+
+            /*! Idea: Provide a method to change the references a and b for recycling the Levenshtein-obj in the main.cpp
+                and moreover, just compare two sentences in each call of the computeDistance(...) method.
+            */
+
+            /// Matrices with |A| rows
+            distances.resize(a.size());
+            edits.resize(a.size());
+
+
+            /// And |B| columns.
+            for(int j=0;j<a.size();j++) {
+                distances[j].resize(b.size());
+                edits[j].resize(b.size());
+            }
         };
         virtual ~Levenshtein();
 
@@ -35,12 +52,16 @@ class Levenshtein
         EditOperation getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j);
         EditOperation determineEditOperation(const Word& a, const Word& b);
         Cost getPreviousCost(const unsigned int i, const unsigned int j);
-        void calculateDistance(const WordList& a,const WordList& b);
+        void calculateDistance();/*!<Calculate the word distance between two sentences.*/
+        void setSentences(const WordList& a, const WordList& b);
+        void printDistanceMatrix();
+        void printEditMatrix();
+        Cost getWER();
     protected:
     private:
-        SentenceList& sentenceA, sentenceB;/**< Set of sentences to compare. */
+        WordList& sentenceA, sentenceB;/**< Set of sentences to compare. */
         Cost substitutionCost, deletionCost, insertionCost;
-        DistanceMatrix distances;
+        DistanceMatrix distances; ///Must be initialized first with their respective sizes!
         EditMatrix edits;
 };
 
