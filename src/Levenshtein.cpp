@@ -10,7 +10,18 @@ Levenshtein::~Levenshtein()
     //dtor
 }
 
-Cost Levenshtein::getCost(EditOperation type) {
+
+void Levenshtein::setCost(const EditOperation& type, const Cost newCost) {
+    switch(type) {
+        case DEL: deletionCost=newCost; break;
+        case INS: insertionCost=newCost; break;
+        case SUB: substitutionCost=newCost; break;
+        default: break;///Do nothing, just for the compiler to stop warning.
+    }
+}
+
+
+Cost Levenshtein::getCost(const EditOperation& type) {
     switch(type) {
         case DEL: return deletionCost;
         case INS: return insertionCost;
@@ -20,11 +31,26 @@ Cost Levenshtein::getCost(EditOperation type) {
     }
 }
 
-void Levenshtein::setCost(EditOperation type, Cost newValue) {
-    switch(type) {
-        case DEL: deletionCost=newValue; break;
-        case INS: insertionCost=newValue; break;
-        case SUB: substitutionCost=newValue; break;
-        default: break;///Do nothing, just for the compiler to stop warning.
+EditOperation Levenshtein::determineEditOperation(Word& a, Word& b) {
+    if(a.empty() && !b.empty()) {
+        return INS;
     }
+    else if(b.empty() && !a.empty()) {
+        return DEL;
+    }
+    else if(a.compare(b)!=0) {
+        return SUB;
+    }
+    return NO;
+}
+/*DistanceMatrix getDistanceMatrix() {
+    return distances;
+}*/
+
+void Levenshtein::setEditOperation(EditMatrix& mtx,const unsigned int i, const unsigned int j, EditOperation operation) {
+    mtx[i][j]=operation;
+}
+
+EditOperation Levenshtein::getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j) {
+    return mtx[i][j];
 }

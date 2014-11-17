@@ -8,17 +8,22 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 
 using Cost=unsigned int;
+using CostPtr=std::shared_ptr<Cost>;
 using Word=std::string;
 using WordList=std::vector<Word>;
 using SentenceList=std::vector<WordList>;
+using DistanceMatrix=std::vector<std::vector<Cost>>;
+using BackPtrMatrix=std::vector<std::vector<CostPtr>>;/**< Stores for each field of the DistanceMatrix its predecessor of the Levenshtein-algorithm. */
 
 enum EditOperation {NO, SUB, INS, DEL};
-
+using EditMatrix=std::vector<std::vector<EditOperation>>;
 
 class Levenshtein
 {
+
     public:
 
         Levenshtein(WordList& a, WordList& b):Levenshtein(a,b,1,1,1) {};
@@ -36,14 +41,17 @@ class Levenshtein
          * \return
          *
          */
-        void setCost(EditOperation type, Cost newValue);
-        Cost getCost(EditOperation type);
-
+        void setCost(const EditOperation& type, const Cost newCost);
+        Cost getCost(const EditOperation& type);
+        void setEditOperation(EditMatrix& mtx,const unsigned int i, const unsigned int j, EditOperation operation);
+        EditOperation getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j);
+        EditOperation determineEditOperation(Word& a, Word& b);
     protected:
     private:
         WordList& sentenceA, sentenceB;/**< Sentences to compare. */
         Cost substitutionCost, deletionCost, insertionCost;
-
+        DistanceMatrix distances;
+        EditMatrix edits;
 };
 
 #endif // LEVENSHTEIN_H

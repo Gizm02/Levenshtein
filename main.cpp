@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include "Levenshtein.h"
 
-
+#define DBG 1
 
 // definition of data types
 ///typedef std::string Word;
@@ -123,6 +123,7 @@ void usage(const char * basename) {
 }
 
 int main(int argc, char* argv[]){
+
     // check for correct number of command line arguments
     if (argc != 3)
 	usage(argv[0]);
