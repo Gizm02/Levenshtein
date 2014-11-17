@@ -9,10 +9,10 @@
 #include <vector>
 #include <string>
 
-typedef unsigned int Cost;
-typedef std::string Word;
-typedef std::vector<Word> WordList;
-typedef std::vector<WordList> SentenceList;
+using Cost=unsigned int;
+using Word=std::string;
+using WordList=std::vector<Word>;
+using SentenceList=std::vector<WordList>;
 
 enum EditOperation {NO, SUB, INS, DEL};
 
@@ -43,6 +43,7 @@ class Levenshtein
     private:
         WordList& sentenceA, sentenceB;/**< Sentences to compare. */
         Cost substitutionCost, deletionCost, insertionCost;
+
 };
 
 #endif // LEVENSHTEIN_H

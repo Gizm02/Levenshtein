@@ -12,7 +12,7 @@
 // definition of data types
 ///typedef std::string Word;
 ///typedef std::vector<Word> WordList;
-typedef std::vector<WordList> SentenceList;
+using SentenceList=std::vector<WordList>;
 
 ///enum EditOperation {NO, SUB, INS, DEL};
 struct AlignmentElement {
@@ -23,7 +23,7 @@ struct AlignmentElement {
     AlignmentElement(const Word & spoken, const Word & recog, EditOperation operation) :
 	spoken(spoken), recog(recog), operation(operation) {}
 };
-typedef std::vector<AlignmentElement> Alignment;
+using Alignment=std::vector<AlignmentElement> ;
 
 
 
