@@ -11,6 +11,7 @@ Levenshtein::~Levenshtein()
 }
 
 
+
 void Levenshtein::setCost(const EditOperation& type, const Cost newCost) {
     switch(type) {
         case DEL: deletionCost=newCost; break;
@@ -53,4 +54,21 @@ void Levenshtein::setEditOperation(EditMatrix& mtx,const unsigned int i, const u
 
 EditOperation Levenshtein::getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j) {
     return mtx[i][j];
+}
+
+
+void calculateDistance(SentenceList& a, SentenceList& b) {
+    if(a[0][0].compare(b[0][0])!=0) {
+        distances[0][0]=1;
+    }
+    else {
+        distances[0][0]=0;
+    }
+    Cost j;
+    for(size_t i=1,j=distances[0][0];i<a[0].size();i++,j++) {
+        distances[0][i]=j;
+    }
+    for(size_t i=1,j=distances[0][0];i<b[0].size();i++,j++) {
+        distances[i][0]=j;
+    }
 }

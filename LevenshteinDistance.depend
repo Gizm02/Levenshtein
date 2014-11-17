@@ -18,3 +18,22 @@
 	"Levenshtein.h"
 	<climits>
 
+1416238413 source:/home/kenzo/github/Levenshtein/src/Levenshtein.cpp
+	"Levenshtein.h"
+	<climits>
+
+1416240669 /home/kenzo/github/Levenshtein/include/Levenshtein.h
+	<vector>
+	<string>
+	<memory>
+
+1416239572 source:/home/kenzo/github/Levenshtein/main.cpp
+	<iomanip>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<vector>
+	<stdlib.h>
+	"Levenshtein.h"
+

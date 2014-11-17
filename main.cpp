@@ -153,11 +153,13 @@ int main(int argc, char* argv[]){
 		      << std::endl;
 	    return 3;
 	}
-    }
+}
 
-
-    // ... <your code>
-
+    /*! spoken and recog contain the words that are read in. spoken[i] contains the i. sentence and spoken[i][j] the j. word
+    *   of the spoken text.
+     */
+    /// ... <your code>
+    Levenshtein l(spoken,recog,1,1,1);
 
     return 0;
 }

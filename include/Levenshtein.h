@@ -26,19 +26,20 @@ class Levenshtein
 
     public:
 
-        Levenshtein(WordList& a, WordList& b):Levenshtein(a,b,1,1,1) {};
-        Levenshtein(WordList& a, WordList& b, Cost pen):Levenshtein(a,b,pen,pen,pen) {};
+        Levenshtein(SentenceList& a, SentenceList& b):Levenshtein(a,b,1,1,1) {};
+        Levenshtein(SentenceList& a, SentenceList& b, Cost pen):Levenshtein(a,b,pen,pen,pen) {};
 
         /**< This is the basic ctor of this class. */
-        Levenshtein(WordList& a, WordList& b, Cost subPen, Cost insPen, Cost delPen):sentenceA(a),sentenceB(b),substitutionCost(subPen),deletionCost(delPen),insertionCost(insPen) {};
+        Levenshtein(SentenceList& a, SentenceList& b, Cost subPen, Cost insPen, Cost delPen):sentenceA(a),sentenceB(b),substitutionCost(subPen),deletionCost(delPen),insertionCost(insPen) {
+
+        };
         virtual ~Levenshtein();
 
 
         /** \brief This function allows to set the penalties for Substitution, deletion or insertion individually.
          *
-         * \param old This is one of the
-         * \param
-         * \return
+         * \param type The type of the edit operation.
+         * \param newCost The new cost for the edit operation.
          *
          */
         void setCost(const EditOperation& type, const Cost newCost);
@@ -46,9 +47,10 @@ class Levenshtein
         void setEditOperation(EditMatrix& mtx,const unsigned int i, const unsigned int j, EditOperation operation);
         EditOperation getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j);
         EditOperation determineEditOperation(Word& a, Word& b);
+        void calculateDistance(SentenceList& a, SentenceList& b);
     protected:
     private:
-        WordList& sentenceA, sentenceB;/**< Sentences to compare. */
+        SentenceList& sentenceA, sentenceB;/**< Sentences to compare. */
         Cost substitutionCost, deletionCost, insertionCost;
         DistanceMatrix distances;
         EditMatrix edits;
