@@ -2,24 +2,11 @@
  *  given strings.
  */
 
-
+#include "Typedef.h"
 #ifndef LEVENSHTEIN_H
 #define LEVENSHTEIN_H
 
-#include <vector>
-#include <string>
-#include <memory>
 
-using Cost=unsigned int;
-using CostPtr=std::shared_ptr<Cost>;
-using Word=std::string;
-using WordList=std::vector<Word>;
-using SentenceList=std::vector<WordList>;
-using DistanceMatrix=std::vector<std::vector<Cost>>;
-using BackPtrMatrix=std::vector<std::vector<CostPtr>>;/**< Stores for each field of the DistanceMatrix its predecessor of the Levenshtein-algorithm. */
-
-enum EditOperation {NO, SUB, INS, DEL};
-using EditMatrix=std::vector<std::vector<EditOperation>>;
 
 class Levenshtein
 {
@@ -46,11 +33,12 @@ class Levenshtein
         Cost getCost(const EditOperation& type);
         void setEditOperation(EditMatrix& mtx,const unsigned int i, const unsigned int j, EditOperation operation);
         EditOperation getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j);
-        EditOperation determineEditOperation(Word& a, Word& b);
-        void calculateDistance(SentenceList& a, SentenceList& b);
+        EditOperation determineEditOperation(const Word& a, const Word& b);
+        Cost getPreviousCost(const unsigned int i, const unsigned int j);
+        void calculateDistance(const WordList& a,const WordList& b);
     protected:
     private:
-        SentenceList& sentenceA, sentenceB;/**< Sentences to compare. */
+        SentenceList& sentenceA, sentenceB;/**< Set of sentences to compare. */
         Cost substitutionCost, deletionCost, insertionCost;
         DistanceMatrix distances;
         EditMatrix edits;

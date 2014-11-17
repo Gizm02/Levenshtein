@@ -159,7 +159,11 @@ int main(int argc, char* argv[]){
     *   of the spoken text.
      */
     /// ... <your code>
-    Levenshtein l(spoken,recog,1,1,1);
-
+    Levenshtein levenshtein(spoken,recog,1,1,1);
+    for(auto const& spokenSentence: spoken) {
+        for(auto const& recSentence: recog) {
+            levenshtein.calculateDistance(spokenSentence,recSentence);
+        }
+    }
     return 0;
 }
