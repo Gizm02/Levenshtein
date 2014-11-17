@@ -20,12 +20,12 @@ enum EditOperation {NO, SUB, INS, DEL};
 class Levenshtein
 {
     public:
-        Levenshtein();
-        Levenshtein(WordList a, WordList b):Levenshtein(a,b,1,1,1) {};
-        Levenshtein(WordList a, WordList b, Cost pen):Levenshtein(a,b,pen,pen,pen) {};
+
+        Levenshtein(WordList& a, WordList& b):Levenshtein(a,b,1,1,1) {};
+        Levenshtein(WordList& a, WordList& b, Cost pen):Levenshtein(a,b,pen,pen,pen) {};
 
         /**< This is the basic ctor of this class. */
-        Levenshtein(WordList a, WordList b, Cost subPen, Cost insPen, Cost delPen):sentenceA(a),sentenceB(b),substitutionCost(subPen),deletionCost(delPen),insertionCost(insPen) {};
+        Levenshtein(WordList& a, WordList& b, Cost subPen, Cost insPen, Cost delPen):sentenceA(a),sentenceB(b),substitutionCost(subPen),deletionCost(delPen),insertionCost(insPen) {};
         virtual ~Levenshtein();
 
 
@@ -41,7 +41,7 @@ class Levenshtein
 
     protected:
     private:
-        WordList sentenceA, sentenceB;/**< Sentences to compare. */
+        WordList& sentenceA, sentenceB;/**< Sentences to compare. */
         Cost substitutionCost, deletionCost, insertionCost;
 };
 

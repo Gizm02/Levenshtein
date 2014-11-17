@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -20,7 +21,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Levenshtein.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Levenshtein.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

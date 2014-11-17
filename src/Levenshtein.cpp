@@ -4,10 +4,6 @@
 
 #define INVALID_INPUT UINT_MAX
 
-Levenshtein::Levenshtein()
-{
-    //ctor
-}
 
 Levenshtein::~Levenshtein()
 {
@@ -19,7 +15,7 @@ Cost Levenshtein::getCost(EditOperation type) {
         case DEL: return deletionCost;
         case INS: return insertionCost;
         case SUB: return substitutionCost;
-
+        case NO: return 0;
         default: return INVALID_INPUT;/**< Case if no valid input was given. */
     }
 }
@@ -29,6 +25,6 @@ void Levenshtein::setCost(EditOperation type, Cost newValue) {
         case DEL: deletionCost=newValue; break;
         case INS: insertionCost=newValue; break;
         case SUB: substitutionCost=newValue; break;
-        default: ;///Do nothing, just for the compiler to stop warning.
+        default: break;///Do nothing, just for the compiler to stop warning.
     }
 }
