@@ -98,9 +98,8 @@ class Levenshtein
 
         /** \brief This method updates the sizes of the distance and the edit matrices.
          *
-         * \param
-         * \param
-         *
+         * \param rows The new number of rows.
+         * \param columns The new number of columns of the matrices.
          */
         void update(const unsigned int rows, const unsigned int columns);/**< Reinitialize the cost and edit matrices. */
     protected:

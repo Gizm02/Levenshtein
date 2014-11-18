@@ -114,6 +114,7 @@ void writeAlignment(const Alignment & alignment, std::ostream & os) {
 
 
 
+
 // -----------------------------------------------------------------------------
 // main
 
@@ -172,8 +173,9 @@ int main(int argc, char* argv[]){
             #if DBG>0
                 std::cout<<"I am comparing the "<<(i+1)<<". sentences now"<<std::endl;
                 std::cout<<"File: "<<__FILE__<<" at line "<<__LINE__<<std::endl;
+                levenshtein.printSentences(spoken[i],recog[i]);
             #endif
-            //levenshtein.setSentences(spoken[i],recog[i]);///remove this
+            ///levenshtein.setSentences(spoken[i],recog[i]);///remove this
             levenshtein.calculateDistance(spoken[i],recog[i]);
             /*Alignment alignment;
             unsigned int length = std::min(spoken.size(),recSentence.size());
@@ -184,7 +186,6 @@ int main(int argc, char* argv[]){
             #if DBG>0
                 levenshtein.printDistanceMatrix();
                 levenshtein.printEditMatrix();
-                levenshtein.printSentences(spoken[i],recog[i]);
             #endif
             ///writeAlignment(alignment, std::cout);
     }

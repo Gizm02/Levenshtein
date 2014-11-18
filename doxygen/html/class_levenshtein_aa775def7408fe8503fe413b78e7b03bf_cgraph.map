@@ -1,0 +1,5 @@
+<map id="Levenshtein::calculateDistance" name="Levenshtein::calculateDistance">
+<area shape="rect" id="node2" href="$class_levenshtein.html#a1422a849769bd88618cdc6bac8658583" title="This method updates the sizes of the distance and the edit matrices. " alt="" coords="282,5,419,32"/>
+<area shape="rect" id="node3" href="$class_levenshtein.html#a0cc677a192107c7fede04b56888d8096" title="This method determines the editing operation for two given words. " alt="" coords="261,57,440,98"/>
+<area shape="rect" id="node4" href="$class_levenshtein.html#aa98c5aa808e711d5e181e2c7d7e7b993" title="Levenshtein::getPreviousCost" alt="" coords="255,123,447,149"/>
+</map>

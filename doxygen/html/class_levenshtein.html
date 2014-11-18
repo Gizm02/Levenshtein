@@ -135,11 +135,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a513053d5fa905cddd6b2497c8c3de2e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the edit operation performed for a certain pair of words.  <a href="#a513053d5fa905cddd6b2497c8c3de2e2">More...</a><br /></td></tr>
 <tr class="separator:a513053d5fa905cddd6b2497c8c3de2e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cc677a192107c7fede04b56888d8096"><td class="memItemLeft" align="right" valign="top">EditOperation&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_levenshtein.html#a0cc677a192107c7fede04b56888d8096">determineEditOperation</a> (const Word &amp;a, const Word &amp;b)</td></tr>
+<tr class="memdesc:a0cc677a192107c7fede04b56888d8096"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method determines the editing operation for two given words.  <a href="#a0cc677a192107c7fede04b56888d8096">More...</a><br /></td></tr>
 <tr class="separator:a0cc677a192107c7fede04b56888d8096"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29d2094582838d63c8ac76daa660cfef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_levenshtein.html#a29d2094582838d63c8ac76daa660cfef">printSentences</a> (const WordList &amp;a, const WordList &amp;b)</td></tr>
+<tr class="separator:a29d2094582838d63c8ac76daa660cfef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa98c5aa808e711d5e181e2c7d7e7b993"><td class="memItemLeft" align="right" valign="top">Cost&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_levenshtein.html#aa98c5aa808e711d5e181e2c7d7e7b993">getPreviousCost</a> (const unsigned int i, const unsigned int j)</td></tr>
 <tr class="separator:aa98c5aa808e711d5e181e2c7d7e7b993"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace61630a179c65d92d58b6e6ca546cb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_levenshtein.html#ace61630a179c65d92d58b6e6ca546cb0">calculateDistance</a> ()</td></tr>
 <tr class="separator:ace61630a179c65d92d58b6e6ca546cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa775def7408fe8503fe413b78e7b03bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_levenshtein.html#aa775def7408fe8503fe413b78e7b03bf">calculateDistance</a> (const WordList &amp;senA, const WordList &amp;senB)</td></tr>
+<tr class="separator:aa775def7408fe8503fe413b78e7b03bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a111d613ad6e1087e8fa2789dcef8f444"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_levenshtein.html#a111d613ad6e1087e8fa2789dcef8f444">setSentences</a> (const WordList &amp;a, const WordList &amp;b)</td></tr>
 <tr class="separator:a111d613ad6e1087e8fa2789dcef8f444"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28e5de2a8f0da1a8724b334a214b0d3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_levenshtein.html#a28e5de2a8f0da1a8724b334a214b0d3e">printDistanceMatrix</a> ()</td></tr>
@@ -148,6 +153,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9501f69daf2b8189fa932049105bca87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ebf7ac3227ec26e52c9e45e1c5647b5"><td class="memItemLeft" align="right" valign="top">Cost&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_levenshtein.html#a2ebf7ac3227ec26e52c9e45e1c5647b5">getWER</a> ()</td></tr>
 <tr class="separator:a2ebf7ac3227ec26e52c9e45e1c5647b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1422a849769bd88618cdc6bac8658583"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_levenshtein.html#a1422a849769bd88618cdc6bac8658583">update</a> (const unsigned int rows, const unsigned int columns)</td></tr>
+<tr class="memdesc:a1422a849769bd88618cdc6bac8658583"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method updates the sizes of the distance and the edit matrices.  <a href="#a1422a849769bd88618cdc6bac8658583">More...</a><br /></td></tr>
+<tr class="separator:a1422a849769bd88618cdc6bac8658583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -336,12 +344,40 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Calculate the word distance between two sentences. </p>
 
+</div>
+</div>
+<a class="anchor" id="aa775def7408fe8503fe413b78e7b03bf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Levenshtein::calculateDistance </td>
+          <td>(</td>
+          <td class="paramtype">const WordList &amp;&#160;</td>
+          <td class="paramname"><em>senA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const WordList &amp;&#160;</td>
+          <td class="paramname"><em>senB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>i=senA.size()</p>
+<p>i=senB.size() </p>
+
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_levenshtein_ace61630a179c65d92d58b6e6ca546cb0_cgraph.png" border="0" usemap="#class_levenshtein_ace61630a179c65d92d58b6e6ca546cb0_cgraph" alt=""/></div>
-<map name="class_levenshtein_ace61630a179c65d92d58b6e6ca546cb0_cgraph" id="class_levenshtein_ace61630a179c65d92d58b6e6ca546cb0_cgraph">
-<area shape="rect" id="node2" href="class_levenshtein.html#a0cc677a192107c7fede04b56888d8096" title="Levenshtein::determineEdit\lOperation" alt="" coords="261,5,440,47"/><area shape="rect" id="node3" href="class_levenshtein.html#aa98c5aa808e711d5e181e2c7d7e7b993" title="Levenshtein::getPreviousCost" alt="" coords="255,71,447,98"/></map>
+<div class="center"><img src="class_levenshtein_aa775def7408fe8503fe413b78e7b03bf_cgraph.png" border="0" usemap="#class_levenshtein_aa775def7408fe8503fe413b78e7b03bf_cgraph" alt=""/></div>
+<map name="class_levenshtein_aa775def7408fe8503fe413b78e7b03bf_cgraph" id="class_levenshtein_aa775def7408fe8503fe413b78e7b03bf_cgraph">
+<area shape="rect" id="node2" href="class_levenshtein.html#a1422a849769bd88618cdc6bac8658583" title="This method updates the sizes of the distance and the edit matrices. " alt="" coords="282,5,419,32"/><area shape="rect" id="node3" href="class_levenshtein.html#a0cc677a192107c7fede04b56888d8096" title="This method determines the editing operation for two given words. " alt="" coords="261,57,440,98"/><area shape="rect" id="node4" href="class_levenshtein.html#aa98c5aa808e711d5e181e2c7d7e7b993" title="Levenshtein::getPreviousCost" alt="" coords="255,123,447,149"/></map>
 </div>
 </p>
 
@@ -370,6 +406,17 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This method determines the editing operation for two given words. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mtx</td><td>The edit matrix containing all editing operations for all pairs of words. </td></tr>
+    <tr><td class="paramname">i</td><td>The row entry in the matrix. </td></tr>
+    <tr><td class="paramname">j</td><td>The column entry in the matrix. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The performed edit operations performed to translate word at position i to word at position j in the other sentence. </dd></dl>
 
 </div>
 </div>
@@ -439,6 +486,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The performed edit operations performed to translate word at position i to word at position j in the other sentence. </dd></dl>
+<p>&lt; Only allow parameters </p>
 
 </div>
 </div>
@@ -507,6 +555,32 @@ Here is the call graph for this function:</div>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a29d2094582838d63c8ac76daa660cfef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Levenshtein::printSentences </td>
+          <td>(</td>
+          <td class="paramtype">const WordList &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const WordList &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -622,6 +696,53 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_levenshtein_a111d613ad6e1087e8fa2789dcef8f444_cgraph.png" border="0" usemap="#class_levenshtein_a111d613ad6e1087e8fa2789dcef8f444_cgraph" alt=""/></div>
+<map name="class_levenshtein_a111d613ad6e1087e8fa2789dcef8f444_cgraph" id="class_levenshtein_a111d613ad6e1087e8fa2789dcef8f444_cgraph">
+<area shape="rect" id="node2" href="class_levenshtein.html#a1422a849769bd88618cdc6bac8658583" title="This method updates the sizes of the distance and the edit matrices. " alt="" coords="232,5,369,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a1422a849769bd88618cdc6bac8658583"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Levenshtein::update </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>rows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>columns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This method updates the sizes of the distance and the edit matrices. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rows</td><td>The new number of rows. </td></tr>
+    <tr><td class="paramname">columns</td><td>The new number of columns of the matrices.Reinitialize the cost and edit matrices. </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>&lt; problem: columns is not equal in all words</p>
+<p>Matrices with |A| rows</p>
+<p>And |B| columns. </p>
 
 </div>
 </div>
@@ -779,7 +900,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_levenshtein.html">Levenshtein</a></li>
-    <li class="footer">Generated on Mon Nov 17 2014 21:10:08 for LevenshteinDistance by
+    <li class="footer">Generated on Tue Nov 18 2014 21:22:01 for LevenshteinDistance by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

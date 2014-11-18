@@ -1,3 +1,10 @@
-D:/Documents/cpp_projects/LevenshteinDistance/main.cpp:163: warning: explicit link request to 'recognized' could not be resolved
-D:/Documents/cpp_projects/LevenshteinDistance/main.cpp:164: warning: explicit link request to 'spoken' could not be resolved
+D:/Documents/cpp_projects/LevenshteinDistance/main.cpp:194: warning: Reached end of file while still inside a (nested) comment. Nesting level 1 (probable line reference: 179)
 D:/Documents/cpp_projects/LevenshteinDistance/main.cpp:165: warning: explicit link request to 'recognized' could not be resolved
+D:/Documents/cpp_projects/LevenshteinDistance/main.cpp:166: warning: explicit link request to 'spoken' could not be resolved
+D:/Documents/cpp_projects/LevenshteinDistance/main.cpp:167: warning: explicit link request to 'recognized' could not be resolved
+D:/Documents/cpp_projects/LevenshteinDistance/include/Levenshtein.h:81: warning: argument 'mtx' of command @param is not found in the argument list of Levenshtein::determineEditOperation(const Word &a, const Word &b)
+D:/Documents/cpp_projects/LevenshteinDistance/include/Levenshtein.h:81: warning: argument 'i' of command @param is not found in the argument list of Levenshtein::determineEditOperation(const Word &a, const Word &b)
+D:/Documents/cpp_projects/LevenshteinDistance/include/Levenshtein.h:81: warning: argument 'j' of command @param is not found in the argument list of Levenshtein::determineEditOperation(const Word &a, const Word &b)
+D:/Documents/cpp_projects/LevenshteinDistance/include/Levenshtein.h:81: warning: The following parameters of Levenshtein::determineEditOperation(const Word &a, const Word &b) are not documented:
+  parameter 'a'
+  parameter 'b'

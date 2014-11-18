@@ -102,7 +102,6 @@ $(document).ready(function(){initNavTree('main_8cpp.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -122,7 +121,7 @@ Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#main_8cpp" alt=""/></div>
 <map name="main_8cpp" id="main_8cpp">
-<area shape="rect" id="node9" href="_levenshtein_8h.html" title="Levenshtein.h" alt="" coords="197,80,299,107"/></map>
+<area shape="rect" id="node9" href="_levenshtein_8h.html" title="Levenshtein.h" alt="" coords="248,80,349,107"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -130,11 +129,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alignment_element.html">AlignmentElement</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">enum EditOperation {NO, SUB, INS, DEL};  <a href="struct_alignment_element.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a49606be7356624568932ec81c0d429f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a49606be7356624568932ec81c0d429f4">DBG</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a49606be7356624568932ec81c0d429f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -155,19 +149,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a49be535492217e579ce9038424650080"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a49be535492217e579ce9038424650080">usage</a> (const char *basename)</td></tr>
 <tr class="separator:a49be535492217e579ce9038424650080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a49606be7356624568932ec81c0d429f4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DBG&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="a9d722dbba00b87a61ab9a81576127e8b"></a>
 <div class="memitem">
@@ -207,14 +188,16 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>spoken and recog contain the words that are read in. spoken[i] contains the i. sentence and spoken[i][j] the j. word of the i. spoken text.</p>
 <p>recog.size()== #recognized sentences spoken.size()== #spoken sentences recog[0].size()== #recognized words of the first sentence</p>
-<p>Initiation with the first sentence of each spoken and recognized sentences. </p>
+<p>Initiation with the first sentence of each spoken and recognized sentences.</p>
+<p>remove this</p>
+<p>writeAlignment(alignment, std::cout); </p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
 <map name="main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph" id="main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph">
-<area shape="rect" id="node2" href="main_8cpp.html#a2ef30c42cbc289d899a8be5d2d8f77d0" title="usage" alt="" coords="176,5,233,32"/><area shape="rect" id="node3" href="main_8cpp.html#a5063683f579eaf6b272e914222405c48" title="This method reads line&#45;wise sentences from an input file and reads each line word wise..." alt="" coords="150,56,259,83"/><area shape="rect" id="node4" href="class_levenshtein.html#a111d613ad6e1087e8fa2789dcef8f444" title="Levenshtein::setSentences" alt="" coords="115,107,294,133"/><area shape="rect" id="node5" href="class_levenshtein.html#ace61630a179c65d92d58b6e6ca546cb0" title="Levenshtein::calculateDistance" alt="" coords="104,157,305,184"/><area shape="rect" id="node8" href="class_levenshtein.html#a28e5de2a8f0da1a8724b334a214b0d3e" title="Levenshtein::printDistance\lMatrix" alt="" coords="117,209,292,250"/><area shape="rect" id="node9" href="class_levenshtein.html#a9501f69daf2b8189fa932049105bca87" title="Levenshtein::printEditMatrix" alt="" coords="113,275,296,301"/><area shape="rect" id="node10" href="main_8cpp.html#a719e19df078d7fe796c67bbe61c32397" title="writeAlignment" alt="" coords="151,325,258,352"/><area shape="rect" id="node6" href="class_levenshtein.html#a0cc677a192107c7fede04b56888d8096" title="Levenshtein::determineEdit\lOperation" alt="" coords="360,121,539,162"/><area shape="rect" id="node7" href="class_levenshtein.html#aa98c5aa808e711d5e181e2c7d7e7b993" title="Levenshtein::getPreviousCost" alt="" coords="353,187,545,213"/></map>
+<area shape="rect" id="node2" href="main_8cpp.html#a2ef30c42cbc289d899a8be5d2d8f77d0" title="usage" alt="" coords="176,5,233,32"/><area shape="rect" id="node3" href="main_8cpp.html#a5063683f579eaf6b272e914222405c48" title="This method reads line&#45;wise sentences from an input file and reads each line word wise..." alt="" coords="150,56,259,83"/><area shape="rect" id="node4" href="class_levenshtein.html#a111d613ad6e1087e8fa2789dcef8f444" title="Levenshtein::setSentences" alt="" coords="115,107,294,133"/><area shape="rect" id="node6" href="class_levenshtein.html#ace61630a179c65d92d58b6e6ca546cb0" title="Levenshtein::calculateDistance" alt="" coords="104,157,305,184"/><area shape="rect" id="node5" href="class_levenshtein.html#a1422a849769bd88618cdc6bac8658583" title="This method updates the sizes of the distance and the edit matrices. " alt="" coords="353,107,491,133"/></map>
 </div>
 </p>
 
@@ -321,7 +304,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a></li>
-    <li class="footer">Generated on Mon Nov 17 2014 21:10:08 for LevenshteinDistance by
+    <li class="footer">Generated on Tue Nov 18 2014 21:22:01 for LevenshteinDistance by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

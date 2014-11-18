@@ -2,10 +2,6 @@
 <area shape="rect" id="node2" href="$main_8cpp.html#a2ef30c42cbc289d899a8be5d2d8f77d0" title="usage" alt="" coords="176,5,233,32"/>
 <area shape="rect" id="node3" href="$main_8cpp.html#a5063683f579eaf6b272e914222405c48" title="This method reads line&#45;wise sentences from an input file and reads each line word wise..." alt="" coords="150,56,259,83"/>
 <area shape="rect" id="node4" href="$class_levenshtein.html#a111d613ad6e1087e8fa2789dcef8f444" title="Levenshtein::setSentences" alt="" coords="115,107,294,133"/>
-<area shape="rect" id="node5" href="$class_levenshtein.html#ace61630a179c65d92d58b6e6ca546cb0" title="Levenshtein::calculateDistance" alt="" coords="104,157,305,184"/>
-<area shape="rect" id="node8" href="$class_levenshtein.html#a28e5de2a8f0da1a8724b334a214b0d3e" title="Levenshtein::printDistance\lMatrix" alt="" coords="117,209,292,250"/>
-<area shape="rect" id="node9" href="$class_levenshtein.html#a9501f69daf2b8189fa932049105bca87" title="Levenshtein::printEditMatrix" alt="" coords="113,275,296,301"/>
-<area shape="rect" id="node10" href="$main_8cpp.html#a719e19df078d7fe796c67bbe61c32397" title="writeAlignment" alt="" coords="151,325,258,352"/>
-<area shape="rect" id="node6" href="$class_levenshtein.html#a0cc677a192107c7fede04b56888d8096" title="Levenshtein::determineEdit\lOperation" alt="" coords="360,121,539,162"/>
-<area shape="rect" id="node7" href="$class_levenshtein.html#aa98c5aa808e711d5e181e2c7d7e7b993" title="Levenshtein::getPreviousCost" alt="" coords="353,187,545,213"/>
+<area shape="rect" id="node6" href="$class_levenshtein.html#ace61630a179c65d92d58b6e6ca546cb0" title="Levenshtein::calculateDistance" alt="" coords="104,157,305,184"/>
+<area shape="rect" id="node5" href="$class_levenshtein.html#a1422a849769bd88618cdc6bac8658583" title="This method updates the sizes of the distance and the edit matrices. " alt="" coords="353,107,491,133"/>
 </map>

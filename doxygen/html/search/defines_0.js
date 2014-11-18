@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dbg',['DBG',['../main_8cpp.html#a49606be7356624568932ec81c0d429f4',1,'main.cpp']]]
+  ['invalid_5finput',['INVALID_INPUT',['../_levenshtein_8cpp.html#a1d8df6fec341be5008a9291378327a59',1,'Levenshtein.cpp']]]
 ];

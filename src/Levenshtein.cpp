@@ -77,7 +77,7 @@ void Levenshtein::setSentences(const WordList& a, const WordList& b) {
     #endif
 }
 
-void Levenshtein::update(const unsigned int rows, const unsigned int columns) {
+void Levenshtein::update(const unsigned int rows, const unsigned int columns) {/**< problem: columns is not equal in all words */
             /// Matrices with |A| rows
             distances.resize(rows);
             edits.resize(rows);
@@ -143,46 +143,57 @@ void Levenshtein::calculateDistance() {
 
 void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
  {
+    Levenshtein::update(senA.size(),senB.size());
     #if DBG>0
+        std::cout<<"Updated the matrices "<<std::endl;
         std::cout << "Starting computing the distance matrix. Initial Part. "<<std::endl;
     #endif
     /*******************Initialize the distance matrix/ default cases *****************************/
-    if(senA[0].compare(senB[0])!=0) {
-        distances[0][0]=1;
-        edits[0][0]=determineEditOperation(senA[0],senB[0]);
+    if(senA.at(0).compare(senB.at(0))!=0) {
+        distances.at(0).at(0)=1;
+        edits.at(0).at(0)=determineEditOperation(senA.at(0),senB.at(0));
     }
     else {
-        distances[0][0]=0;
-        edits[0][0]=NO;
+        distances.at(0).at(0)=0;
+        edits.at(0).at(0)=NO;
     }
-    Cost j=distances[0][0]+1;
+    Cost j=distances.at(0).at(0)+1;
+    #if DBG>0
+        std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
+    #endif // DBG
     if(senA.size()<=senB.size()) {
         size_t i;
         for(i=1;i<senA.size();++i) {
-            distances[0][i]=j;
-            distances[i][0]=j;
-            edits[0][i]=DEL;
-            edits[i][0]=INS;
+            distances.at(0).at(i)=j;
+            distances.at(i).at(0)=j;
+            edits.at(0).at(i)=DEL;
+            edits.at(i).at(0)=INS;
             ++j;
         } /// i=senA.size()
+        #if DBG>0
+            std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
+        #endif // DBG
         for(;i<senB.size();++i) {
-            distances[i][0]=j;
-            edits[i][0]=INS;
+            distances.at(0).at(i)=j;
+            edits.at(0).at(i)=INS;
             ++j;
         }
     }
     else  {
         size_t i;
         for(i=1;i<senB.size();++i) {
-            distances[0][i]=j;
-            distances[i][0]=j;
-            edits[0][i]=DEL;
-            edits[i][0]=INS;
+            distances.at(0).at(i)=j;
+            distances.at(i).at(0)=j;
+            edits.at(0).at(i)=INS;
+            edits.at(i).at(0)=DEL;
             ++j;
-        } /// i=senA.size()
+        } /// i=senB.size()
+        #if DBG>0
+            std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
+        #endif // DBG
         for(;i<senA.size();++i) {
-            distances[0][i]=j;
-            edits[0][i]=INS;
+            distances.at(i).at(0)=j;
+            edits.at(i).at(0)=DEL;
             ++j;
         }
     }
@@ -194,8 +205,13 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
     #endif
     for(unsigned int i=1;i<senA.size();i++) {
         for(unsigned int j=1;j<senB.size();j++) {
-            edits[i][j]=determineEditOperation(senA[i],senB[j]);
-            distances[i][j]=        (senA[i]!=sentenceB[j])      ?       getPreviousCost(i,j)+1      :       getPreviousCost(i,j);
+            if(i<=j) {
+                edits.at(i).at(j)=determineEditOperation(senA.at(i),senB.at(j));
+            }
+            else {
+                edits.at(i).at(j)=INS;
+            }
+            distances.at(i).at(j)=        (senA.at(i)!=senB.at(j))      ?       getPreviousCost(i,j)+1      :       getPreviousCost(i,j);
         }
     }
 }
