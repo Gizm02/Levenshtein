@@ -5,7 +5,7 @@
 #include <string>
 #include <memory>
 
-#define DBG 1
+#define DBG 0
 
 using Cost=unsigned int;
 using CostPtr=std::shared_ptr<Cost>;

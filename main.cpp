@@ -169,7 +169,7 @@ int main(int argc, char* argv[]){
 
     Alignment alignment;
     Levenshtein levenshtein(spoken[0],recog[0]);///Initiation with the first sentence of each spoken and recognized sentences.
-    for(unsigned int i=0;i<;++i) {
+    for(unsigned int i=0;i<spoken.size();++i) {
             #if DBG>0
                 std::cout<<"I am comparing the "<<(i+1)<<". sentences now"<<std::endl;
                 std::cout<<"File: "<<__FILE__<<" at line "<<__LINE__<<std::endl;
