@@ -66,7 +66,7 @@ class Levenshtein
          * \param operation The edit operation supposed to be stored.
          *
          */
-        void setEditOperation(EditMatrix& mtx,const unsigned int i, const unsigned int j, EditOperation operation);
+        void setEditOperation(const unsigned int i, const unsigned int j, EditOperation operation);
 
         /** \brief Retrieve the edit operation performed for a certain pair of words.
          *
@@ -76,7 +76,7 @@ class Levenshtein
          * \return The performed edit operations performed to translate word at position i to word at position j in the other sentence.
          *
          */
-        EditOperation getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j);
+        EditOperation getEditOperation(const unsigned int i, const unsigned int j);
 
         /** \brief This method determines the editing operation for two given words.
          *

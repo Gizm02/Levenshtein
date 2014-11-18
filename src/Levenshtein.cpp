@@ -48,13 +48,13 @@ EditOperation Levenshtein::determineEditOperation(const Word& a,const Word& b) {
     return distances;
 }*/
 
-void Levenshtein::setEditOperation(EditMatrix& mtx,const unsigned int i, const unsigned int j, EditOperation operation) {
-    mtx[i][j]=operation;
+void Levenshtein::setEditOperation(const unsigned int i, const unsigned int j, EditOperation operation) {
+    edits[i][j]=operation;
 }
 
-EditOperation Levenshtein::getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j) {
-    if(i<mtx.size() && j<mtx[i].size()) {/**< Only allow parameters */
-        return mtx[i][j];
+EditOperation Levenshtein::getEditOperation(const unsigned int i, const unsigned int j) {
+    if(i<edits.size() && j<edits[i].size()) {/**< Only allow parameters */
+        return edits[i][j];
     }
     #if DBG>0
         std::cerr<<"Index out of bounds error in"<<__FILE__<< "at line "<<__LINE__ <<std::endl;
@@ -64,7 +64,12 @@ EditOperation Levenshtein::getEditOperation(EditMatrix& mtx, const unsigned int 
 
 
 Cost Levenshtein::getPreviousCost(const unsigned int i, const unsigned int j) {
-    return std::min(distances[i-1][j-1],std::min(distances[i-1][j],distances[i][j-1]));
+    if(i>0 && j >0) {
+        return std::min(distances[i-1][j-1],std::min(distances[i-1][j],distances[i][j-1]));
+    }
+    #if DBG>0
+        std::cerr<<"One of the indices is out of bounds!"<<std::endl;
+    #endif // DBG
 }
 
 
@@ -161,7 +166,7 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
     #if DBG>0
         std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
     #endif // DBG
-    if(senA.size()<=senB.size()) {
+    if(senA.size()<senB.size()) {
         size_t i;
         for(i=1;i<senA.size();++i) {
             distances.at(0).at(i)=j;
@@ -179,7 +184,7 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
             ++j;
         }
     }
-    else  {
+    else  if(senA.size()>senB.size()) {
         size_t i;
         for(i=1;i<senB.size();++i) {
             distances.at(0).at(i)=j;
@@ -197,7 +202,19 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
             ++j;
         }
     }
-
+    else {  ///senA.size()==senB.size()
+        size_t i;
+        for(i=1;i<senB.size();++i) {
+            distances.at(0).at(i)=j;
+            distances.at(i).at(0)=j;
+            edits.at(0).at(i)=INS;
+            edits.at(i).at(0)=DEL;
+            ++j;
+        } /// i=senB.size()
+        #if DBG>0
+            std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
+        #endif // DBG
+    }
     /******************Start computing the non-trivial cases ***************************************/
 
     #if DBG>0
