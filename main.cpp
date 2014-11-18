@@ -166,13 +166,13 @@ int main(int argc, char* argv[]){
     /// recog[0].size()==   #recognized words of the first sentence
 
 
-    Levenshtein levenshtein(spoken[0],recog[0]);///Initiation with the first sentence of each spoken and recognized sentences.
+    Levenshtein levenshtein;///Initiation with the first sentence of each spoken and recognized sentences.
     for(unsigned int i=0;i<spoken.size();++i) {
             #if DBG>0
-                std::cout<<"I am comparing the "<<i<<" th sentences now"<<std::endl;
+                std::cout<<"I am comparing the "<<(i+1)<<" th sentences now"<<std::endl;
                 std::cout<<"File: "<<__FILE__<<" at line "<<__LINE__<<std::endl;
             #endif
-            levenshtein.setSentences(spoken[i],recog[i]);
+            levenshtein.setSentences(spoken[i],recog[i]);///remove this
             levenshtein.calculateDistance();
             /*Alignment alignment;
             unsigned int length = std::min(spoken.size(),recSentence.size());
@@ -183,6 +183,7 @@ int main(int argc, char* argv[]){
             #if DBG>0
                 levenshtein.printDistanceMatrix();
                 levenshtein.printEditMatrix();
+                levenshtein.printSentences(spoken[i],recog[i]);
             #endif
             ///writeAlignment(alignment, std::cout);
     }

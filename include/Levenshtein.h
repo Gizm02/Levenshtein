@@ -76,9 +76,20 @@ class Levenshtein
          *
          */
         EditOperation getEditOperation(EditMatrix& mtx, const unsigned int i, const unsigned int j);
+
+        /** \brief This method determines the editing operation for two given words.
+         *
+         * \param mtx The edit matrix containing all editing operations for all pairs of words.
+         * \param i The row entry in the matrix.
+         * \param j The column entry in the matrix.
+         * \return The performed edit operations performed to translate word at position i to word at position j in the other sentence.
+         *
+         */
         EditOperation determineEditOperation(const Word& a, const Word& b);
+        void printSentences(const WordList& a, const WordList& b);
         Cost getPreviousCost(const unsigned int i, const unsigned int j);
         void calculateDistance();/*!<Calculate the word distance between two sentences.*/
+        void calculateDistance(const WordList& senA, const WordList& senB);
         void setSentences(const WordList& a, const WordList& b);
         void printDistanceMatrix();
         void printEditMatrix();

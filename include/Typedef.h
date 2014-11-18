@@ -14,6 +14,8 @@ using WordList=std::vector<Word>;
 using SentenceList=std::vector<WordList>;
 using CostVector=std::vector<Cost>;
 using DistanceMatrix=std::vector<CostVector>;
+
+///The BackPtrMatrix is not needed yet but do not remove it for further refinement of the functionality.
 using BackPtrMatrix=std::vector<std::vector<CostPtr>>;/**< Stores for each field of the DistanceMatrix its predecessor of the Levenshtein-algorithm. */
 
 enum EditOperation {NO, SUB, INS, DEL};
