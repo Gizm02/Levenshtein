@@ -82,22 +82,28 @@ void Levenshtein::setSentences(const WordList& a, const WordList& b) {
     #endif
 }
 
+
+
 void Levenshtein::update(const unsigned int rows, const unsigned int columns) {/**< problem: columns is not equal in all words */
+            for(unsigned int i=0;i<distances.size();i++) {
+                distances.at(i).clear();
+                edits.at(i).clear();
+            }
             /// Matrices with |A| rows
             distances.resize(rows);
             edits.resize(rows);
 
             /// And |B| columns.
-            for(unsigned int j=0;j<rows;j++) {
-                distances[j].resize(columns);
-                edits[j].resize(columns);
+            for(unsigned int i=0;i<rows;++i) {
+                distances[i].resize(columns);
+                edits[i].resize(columns);
             }
 }
 
 void Levenshtein::printDistanceMatrix() {
     std::cout<<"Print the distance matrix d[i][j]. "<<std::endl;
-    for(int i=0;i<sentenceA.size();i++) {
-        for(int j=0;j<sentenceB.size();j++) {
+    for(int i=0;i<distances.size();i++) {
+        for(int j=0;j<distances[i].size();j++) {
             std::cout<<std::setw(5);
             std::cout<< distances[i][j];
         }
@@ -108,9 +114,9 @@ void Levenshtein::printDistanceMatrix() {
 void Levenshtein::printEditMatrix() {
     std::cout<<"Print the editing matrix edit[i][j]. "<<std::endl;
     std::string output{""};
-    for(int i=0;i<sentenceA.size();i++) {
-        for(int j=0;j<sentenceB.size();j++) {
-            switch(distances[i][j]) {
+    for(int i=0;i<edits.size();i++) {
+        for(int j=0;j<edits[i].size();j++) {
+            switch(edits[i][j]) {
                 case INS: output="INS";break;
                 case SUB: output="SUB";break;
                 case NO: output="NO";break;
@@ -203,7 +209,7 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
         }
     }
     else {  ///senA.size()==senB.size()
-        size_t i;
+        unsigned int i;
         for(i=1;i<senB.size();++i) {
             distances.at(0).at(i)=j;
             distances.at(i).at(0)=j;
@@ -219,13 +225,14 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
 
     #if DBG>0
         std::cout<<"Computing the distances for the non-trivial cases now. "<<std::endl;
+        std::cout<<"It is senA.size()=="<<senA.size()<<" and senB.size()=="<<senB.size()<<std::endl;
     #endif
-    for(unsigned int i=1;i<senA.size();i++) {
-        for(unsigned int j=1;j<senB.size();j++) {
+    for(unsigned int i=1;i<senA.size();++i) {
+        for(unsigned int j=1;j<senB.size();++j) {
             if(i<=j) {
                 edits.at(i).at(j)=determineEditOperation(senA.at(i),senB.at(j));
             }
-            else {
+            else { ///i > j, values beyond the diagonal axis
                 edits.at(i).at(j)=INS;
             }
             distances.at(i).at(j)=        (senA.at(i)!=senB.at(j))      ?       getPreviousCost(i,j)+1      :       getPreviousCost(i,j);
