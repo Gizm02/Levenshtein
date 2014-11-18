@@ -67,7 +67,9 @@ void Levenshtein::setSentences(const WordList& a, const WordList& b) {
     sentenceA=a;
     sentenceB=b;
     update(a.size(),b.size());
-    std::cout<<"Updated the matrices "<<std::endl;
+    #if DBG>0
+        std::cout<<"Updated the matrices "<<std::endl;
+    #endif
 }
 
 void Levenshtein::update(const unsigned int rows, const unsigned int columns) {
@@ -101,7 +103,7 @@ void Levenshtein::printEditMatrix() {
                 case NO: output="NO";break;
                 case DEL: output="DEL";break;
             }
-            std::cout<<" " << output;
+            std::cout << output <<"\t";
         }
         std::cout<<std::endl;
     }

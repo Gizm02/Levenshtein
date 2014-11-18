@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include "Levenshtein.h"
 
-#define DBG 0
+#define DBG 1
 
 
 // definition of data types
