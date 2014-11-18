@@ -89,6 +89,7 @@ class Levenshtein
         EditOperation determineEditOperation(const Word& a, const Word& b);
         void printSentences(const WordList& a, const WordList& b);
         Cost getPreviousCost(const unsigned int i, const unsigned int j);
+        Cost getDistance(const unsigned int i, const unsigned int j);
         void calculateDistance();/*!<Calculate the word distance between two sentences.*/
         void calculateDistance(const WordList& senA, const WordList& senB);
         void setSentences(const WordList& a, const WordList& b);
@@ -96,11 +97,12 @@ class Levenshtein
         void printEditMatrix();
 
         /** \brief Computes the word error rate for two given sentences based on the members sentenceA and sentenceB.
-         *
+         * \param distance The distance between the words, i.e. their respective levenshtein-distance.
+         * \param referenceSize The size of the reference string.
          * \return The word error rate for two sentences=Levenshtein-distance/#words in reference=spoken sentence.
          *
          */
-        double getWER();
+        double getWER(Cost& distance,size_t referenceSize);
 
         /** \brief This method updates the sizes of the distance and the edit matrices.
          *

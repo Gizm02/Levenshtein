@@ -167,6 +167,13 @@ int main(int argc, char* argv[]){
     /// spoken.size()==  #spoken sentences
     /// recog[0].size()==   #recognized words of the first sentence
 
+
+    /************************************************************************************************************/
+        Cost editingDistance=0; ///For task b), stores all Levenshtein-distances of every two compared sentences.
+        size_t referenceSize=0;
+    /************************************************************************************************************/
+
+
     Alignment alignment;
     Levenshtein levenshtein(spoken[0],recog[0]);///Initiation with the first sentence of each spoken and recognized sentences.
     for(unsigned int i=0;i<spoken.size();++i) {
@@ -182,6 +189,13 @@ int main(int argc, char* argv[]){
                 levenshtein.printEditMatrix();
             #endif
 
+            /************************************************************************************************************/
+                referenceSize+=spoken[i].size();
+
+                editingDistance+=levenshtein.getDistance(spoken[i].size()-1,recog[i].size()-1);///Part of the b).
+            /************************************************************************************************************/
+
+
             unsigned int length = std::min(spoken[i].size(),recog[i].size());
             for(int j=0;j<length;++j) {/**< Print the alignment for every two compared sentences here. */
                 alignment.push_back(AlignmentElement(spoken.at(i).at(j), recog.at(i).at(j), levenshtein.getEditOperation(i,j)));
@@ -190,5 +204,11 @@ int main(int argc, char* argv[]){
             writeAlignment(alignment, std::cout);
     }
 
+    /************************************************************************************************************/
+
+        std::cout<<"The word error rate is: "<<levenshtein.getWER(editingDistance,referenceSize)<<std::endl;
+
+
+    /************************************************************************************************************/
     return 0;
 }

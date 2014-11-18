@@ -85,7 +85,7 @@ void Levenshtein::setSentences(const WordList& a, const WordList& b) {
 
 
 void Levenshtein::update(const unsigned int rows, const unsigned int columns) {/**< problem: columns is not equal in all words */
-            for(unsigned int i=0;i<distances.size();i++) {
+            for(unsigned int i=0;i<distances.size();i++) {/**< Clear the matrices. */
                 distances.at(i).clear();
                 edits.at(i).clear();
             }
@@ -130,9 +130,8 @@ void Levenshtein::printEditMatrix() {
 }
 
 
-double Levenshtein::getWER() {
-    double retValue=static_cast<double>(distances.at(sentenceA.size()-1).at(sentenceB.size()-1));
-    retValue/=sentenceA.size();
+double Levenshtein::getWER(Cost& distance,size_t referenceSize) {
+    double retValue=static_cast<double>(distance)/referenceSize;
     return retValue;
 }
 
@@ -153,6 +152,14 @@ void Levenshtein::calculateDistance() {
     Levenshtein::calculateDistance(sentenceA,sentenceB);
 }
 
+Cost Levenshtein::getDistance(const unsigned int i, const unsigned int j) {
+    if(i<distances.size() && j <distances.at(i).size()) {
+        return distances[i][j];
+    }
+    ///No valid parameters:
+    std::cerr<<"Invalid arguments. Passed indeces hurt the boundaries of the distance matrix!"<<std::endl;
+    return INVALID_INPUT;
+}
 
 void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
  {
