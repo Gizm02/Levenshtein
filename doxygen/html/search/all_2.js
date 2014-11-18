@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['deletioncost',['deletionCost',['../class_levenshtein.html#a960430c8e9f06522bf7b57a636d561d6',1,'Levenshtein']]],
-  ['determineeditoperation',['determineEditOperation',['../class_levenshtein.html#a0cc677a192107c7fede04b56888d8096',1,'Levenshtein']]],
-  ['distances',['distances',['../class_levenshtein.html#a6cc4c1e18078e7f78666fcda59b54d4d',1,'Levenshtein']]]
+  ['calculatedistance',['calculateDistance',['../class_levenshtein.html#ace61630a179c65d92d58b6e6ca546cb0',1,'Levenshtein::calculateDistance()'],['../class_levenshtein.html#aa775def7408fe8503fe413b78e7b03bf',1,'Levenshtein::calculateDistance(const WordList &amp;senA, const WordList &amp;senB)']]],
+  ['cost',['Cost',['../_typedef_8h.html#aace98f2ee136c594c97677535036513a',1,'Typedef.h']]],
+  ['costptr',['CostPtr',['../_typedef_8h.html#a0366a0445dcc699503b90b4f060e61ef',1,'Typedef.h']]],
+  ['costvector',['CostVector',['../_typedef_8h.html#a02cd6020616ee0e31ac46d0e2f0052d8',1,'Typedef.h']]]
 ];

@@ -94,7 +94,13 @@ class Levenshtein
         void setSentences(const WordList& a, const WordList& b);
         void printDistanceMatrix();
         void printEditMatrix();
-        Cost getWER();
+
+        /** \brief Computes the word error rate for two given sentences based on the members sentenceA and sentenceB.
+         *
+         * \return The word error rate for two sentences=Levenshtein-distance/#words in reference=spoken sentence.
+         *
+         */
+        double getWER();
 
         /** \brief This method updates the sizes of the distance and the edit matrices.
          *

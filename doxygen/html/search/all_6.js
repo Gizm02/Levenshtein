@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['levenshtein',['Levenshtein',['../class_levenshtein.html',1,'Levenshtein'],['../class_levenshtein.html#a7912618a7e008ce1107f940ac7e34e17',1,'Levenshtein::Levenshtein(WordList &amp;a, WordList &amp;b)'],['../class_levenshtein.html#a43e7d26f1af42248828189d2d75676da',1,'Levenshtein::Levenshtein(WordList &amp;a, WordList &amp;b, Cost pen)'],['../class_levenshtein.html#a89d8f8bbea9ab5bd4829691c684cde65',1,'Levenshtein::Levenshtein(WordList &amp;a, WordList &amp;b, Cost subPen, Cost insPen, Cost delPen)']]],
-  ['levenshtein_2ecpp',['Levenshtein.cpp',['../_levenshtein_8cpp.html',1,'']]],
-  ['levenshtein_2eh',['Levenshtein.h',['../_levenshtein_8h.html',1,'']]],
-  ['levenshtein_5fh',['LEVENSHTEIN_H',['../_levenshtein_8h.html#a9d09919b02432b1c64333816891a1cfb',1,'Levenshtein.h']]]
+  ['ins',['INS',['../_typedef_8h.html#ac5b2a7c86e44b497685472122c824168a958fa7aa9ac4b5cd6e56237041b90584',1,'Typedef.h']]],
+  ['insertioncost',['insertionCost',['../class_levenshtein.html#aed9bb4319afc51c8e34fd5dc2ac8a4d7',1,'Levenshtein']]],
+  ['invalid_5finput',['INVALID_INPUT',['../_levenshtein_8cpp.html#a1d8df6fec341be5008a9291378327a59',1,'Levenshtein.cpp']]]
 ];

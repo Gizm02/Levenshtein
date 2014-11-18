@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['update',['update',['../class_levenshtein.html#a1422a849769bd88618cdc6bac8658583',1,'Levenshtein']]],
-  ['usage',['usage',['../main_8cpp.html#a2ef30c42cbc289d899a8be5d2d8f77d0',1,'usage():&#160;main.cpp'],['../main_8cpp.html#a49be535492217e579ce9038424650080',1,'usage(const char *basename):&#160;main.cpp']]]
+  ['readsentences',['readSentences',['../main_8cpp.html#a5063683f579eaf6b272e914222405c48',1,'main.cpp']]],
+  ['recog',['recog',['../struct_alignment_element.html#a3c83fadc40e9d3d00cf88abad4713485',1,'AlignmentElement']]]
 ];

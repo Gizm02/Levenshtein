@@ -1,0 +1,5 @@
+<map id="SimpleOptimizer::optimize" name="SimpleOptimizer::optimize">
+<area shape="rect" id="node2" href="$class_context.html#a9889406514f6bd9967cca68e81419351" title="Getter function for the energies stored by the context&#45;obj. " alt="" coords="228,5,372,32"/>
+<area shape="rect" id="node3" href="$class_context.html#a7b69dc31e3cf3ea86f9cf3e4bc03ad44" title="This function determines the local costs for inserting the vector x into a certain interval..." alt="" coords="259,56,341,83"/>
+<area shape="rect" id="node4" href="$class_solution.html#a1187d158258f00b9ef2abb9b0f2ceb5d" title="Solution::setSolution" alt="" coords="229,107,371,133"/>
+</map>

@@ -130,8 +130,10 @@ void Levenshtein::printEditMatrix() {
 }
 
 
-Cost Levenshtein::getWER() {
-    return 0;
+double Levenshtein::getWER() {
+    double retValue=static_cast<double>(distances.at(sentenceA.size()-1).at(sentenceB.size()-1));
+    retValue/=sentenceA.size();
+    return retValue;
 }
 
 void Levenshtein::printSentences(const WordList& a, const WordList& b) {
