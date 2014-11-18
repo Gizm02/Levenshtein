@@ -11,7 +11,11 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+<<<<<<< HEAD
 				<Option parameters="materials\recognized.txt materials\spoken.txt" />
+=======
+				<Option parameters="materials/recognized.txt materials/spoken.txt" />
+>>>>>>> b9611cb45ca7d963f1b51ffbce2113721b6512bd
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
@@ -23,6 +27,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Levenshtein.h" />
+		<Unit filename="include/Typedef.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="materials/recognized.txt" />
 		<Unit filename="materials/ref.dat" />
