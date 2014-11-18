@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="materials/recognized.txt materials/spoken.txt" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
@@ -22,6 +23,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Levenshtein.h" />
+		<Unit filename="include/Typedef.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Levenshtein.cpp" />
 		<Extensions>

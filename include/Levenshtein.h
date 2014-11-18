@@ -17,9 +17,10 @@ class Levenshtein
 
         /**< This is the basic ctor of this class. */
         Levenshtein(WordList& a, WordList& b, Cost subPen, Cost insPen, Cost delPen):sentenceA(a),sentenceB(b),substitutionCost(subPen),deletionCost(delPen),insertionCost(insPen) {
-            std::cout << "Size of a is: "<<a.size()<<std::endl;
-            std::cout << "Size of b is: "<<b.size()<<std::endl;
-
+            #if DBG>0
+                std::cout << "Size of a is: "<<a.size()<<std::endl;
+                std::cout << "Size of b is: "<<b.size()<<std::endl;
+            #endif
 
 
             /*! Idea: Provide a method to change the references a and b for recycling the Levenshtein-obj in the main.cpp
@@ -32,7 +33,7 @@ class Levenshtein
 
 
             /// And |B| columns.
-            for(int j=0;j<a.size();j++) {
+            for(unsigned int j=0;j<a.size();j++) {
                 distances[j].resize(b.size());
                 edits[j].resize(b.size());
             }

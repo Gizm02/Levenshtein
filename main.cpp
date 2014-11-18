@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include "Levenshtein.h"
 
-#define DBG 0
+
 
 
 // definition of data types
@@ -167,22 +167,24 @@ int main(int argc, char* argv[]){
 
 
     Levenshtein levenshtein(spoken[0],recog[0]);///Initiation with the first sentence of each spoken and recognized sentences.
-    for(auto const& spokenSentence: spoken) {
-        for(auto const& recSentence: recog) {
-            levenshtein.setSentences(spokenSentence,recSentence);
+    for(unsigned int i=0;i<spoken.size();++i) {
+            #if DBG>0
+                std::cout<<"I am comparing the "<<i<<" th sentences now"<<std::endl;
+                std::cout<<"File: "<<__FILE__<<" at line "<<__LINE__<<std::endl;
+            #endif
+            levenshtein.setSentences(spoken[i],recog[i]);
             levenshtein.calculateDistance();
-            Alignment alignment;
-            unsigned int length = std::min(spokenSentence.size(),recSentence.size());
-            for(int i=0;i<length;i++) {/**< Print the alignment for every two compared sentences here. */
+            /*Alignment alignment;
+            unsigned int length = std::min(spoken.size(),recSentence.size());
+            for(int i=0;i<length;i++) {/**< Print the alignment for every two compared sentences here.
                 alignment.push_back(AlignmentElement("", "HOW", SUB));
                 alignment.push_back(AlignmentElement("",      "LOW", INS));
-            }
+            }*/
             #if DBG>0
                 levenshtein.printDistanceMatrix();
                 levenshtein.printEditMatrix();
             #endif
-            writeAlignment(alignment, std::cout);
-        }
+            ///writeAlignment(alignment, std::cout);
     }
     return 0;
 }

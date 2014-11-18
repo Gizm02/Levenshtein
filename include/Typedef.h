@@ -5,6 +5,8 @@
 #include <string>
 #include <memory>
 
+#define DBG 1
+
 using Cost=unsigned int;
 using CostPtr=std::shared_ptr<Cost>;
 using Word=std::string;
@@ -15,7 +17,6 @@ using DistanceMatrix=std::vector<CostVector>;
 using BackPtrMatrix=std::vector<std::vector<CostPtr>>;/**< Stores for each field of the DistanceMatrix its predecessor of the Levenshtein-algorithm. */
 
 enum EditOperation {NO, SUB, INS, DEL};
-enum ToBePrinted {DISTANCE,EDIT};
 using EditVector=std::vector<EditOperation>; //Not used yet, used it one time but it doesn't hurt anybody to let it stay.
 using EditMatrix=std::vector<EditVector>;
 
