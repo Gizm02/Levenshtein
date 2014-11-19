@@ -75,8 +75,9 @@ void readSentences(std::ifstream & is, SentenceList & sentences) {
 void writeAlignment(const Alignment & alignment, std::ostream & os) {
     std::ostringstream ossSpoken, ossRecog, ossOperation;
     int length;
+
     for (Alignment::const_iterator itAlignment = alignment.begin();
-	 itAlignment != alignment.end(); ++itAlignment)
+	 itAlignment != alignment.end(); ++itAlignment) {
 	switch (itAlignment->operation) {
 	case NO:
 	    length = std::max(itAlignment->spoken.size(), itAlignment->recog.size()) + 1;
@@ -103,10 +104,12 @@ void writeAlignment(const Alignment & alignment, std::ostream & os) {
 	    ossOperation << std::left << std::setw(length) << "D";
 	    break;
 	}
+	}
     os << std::endl;
     os << ossSpoken.str()    << std::endl;
     os << ossRecog.str()     << std::endl;
     os << ossOperation.str() << std::endl;
+
 }
 
 
@@ -199,12 +202,35 @@ int main(int argc, char* argv[]){
             /************************************************************************************************************/
 
 
-            unsigned int length = std::min(spoken[i].size(),recog[i].size());
-            for(int j=0;j<length;++j) {/**< Print the alignment for every two compared sentences here. */
+            size_t minSize = std::min(spoken[i].size(),recog[i].size());
+            size_t j=0;
+            for(;j<minSize;++j) {/**< Print the alignment for every two compared sentences here. */
                 alignment.push_back(AlignmentElement(spoken.at(i).at(j), recog.at(i).at(j), levenshtein.getEditOperation(i,j)));
                 ///alignment.push_back(AlignmentElement(spoken,      "LOW", INS));
+                if((j+1)%5==0) {
+                    writeAlignment(alignment, std::cout);
+                    ///clear the alignment-vector to avoid reprinting the same partial sentences
+                    for(int k=0;k<4;++k) {
+                        alignment.pop_back();
+                    }
+                #if DBG>0
+                    std::cout<<"Alignment size is: "<<alignment.size()<<std::endl;
+                #endif
+                }
+
+            /*************Print the rest of the sentences if one is longer than the other. ***************/
+
             }
-            writeAlignment(alignment, std::cout);
+/*
+            ///clear the alignment-vector to avoid reprinting the same partial sentences
+            for(int k=0;k<=4;k++) {
+                alignment.pop_back();
+            }
+
+            ///j == spoken[i].size() || j == recog[i].size()
+            for(int k=0;k<spoken[i].size()-j;++) {
+                alignment.
+            }*/
     }
 
     /************************************************************************************************************/

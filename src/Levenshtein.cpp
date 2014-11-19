@@ -185,15 +185,19 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
     #if DBG>0
         std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
     #endif // DBG
+    size_t minSize=std::min(senA.size(),senB.size());
+    size_t i;
+    for(i=1;i<minSize;++i) {
+        distances.at(0).at(i)=j;
+        distances.at(i).at(0)=j;
+        edits.at(0).at(i)=DEL;
+        edits.at(i).at(0)=INS;
+        ++j;
+    }
+
+
     if(senA.size()<senB.size()) {
-        size_t i;
-        for(i=1;i<senA.size();++i) {
-            distances.at(0).at(i)=j;
-            distances.at(i).at(0)=j;
-            edits.at(0).at(i)=DEL;
-            edits.at(i).at(0)=INS;
-            ++j;
-        } /// i=senA.size()
+        /// i=senA.size()
         #if DBG>0
             std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
         #endif // DBG
@@ -204,14 +208,6 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
         }
     }
     else  if(senA.size()>senB.size()) {
-        size_t i;
-        for(i=1;i<senB.size();++i) {
-            distances.at(0).at(i)=j;
-            distances.at(i).at(0)=j;
-            edits.at(0).at(i)=INS;
-            edits.at(i).at(0)=DEL;
-            ++j;
-        } /// i=senB.size()
         #if DBG>0
             std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
         #endif // DBG
@@ -221,19 +217,11 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
             ++j;
         }
     }
-    else {  ///senA.size()==senB.size()
-        unsigned int i;
-        for(i=1;i<senB.size();++i) {
-            distances.at(0).at(i)=j;
-            distances.at(i).at(0)=j;
-            edits.at(0).at(i)=INS;
-            edits.at(i).at(0)=DEL;
-            ++j;
-        } /// i=senB.size()
-        #if DBG>0
-            std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
-        #endif // DBG
-    }
+
+    #if DBG>0
+        std::cout<<"Until now everything is just fine. File "<<__FILE__<<", line "<<__LINE__<<std::endl;
+    #endif // DBG
+
     /******************Start computing the non-trivial cases ***************************************/
 
     #if DBG>0
