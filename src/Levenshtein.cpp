@@ -135,6 +135,10 @@ double Levenshtein::getWER(Cost& distance,size_t referenceSize) {
     return retValue;
 }
 
+void Levenshtein::countEditingOperations(Cost& insertions,Cost& deletion, Cost& substitutions) {/**< Always call after computation of the distance matrix! */
+
+}
+
 void Levenshtein::printSentences(const WordList& a, const WordList& b) {
     std::cout<<"Print the spoken sentence:"<<std::endl;
     for(auto const& word: a) {
@@ -244,7 +248,14 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
             else { ///i > j, values beyond the diagonal axis
                 edits.at(i).at(j)=INS;
             }
-            distances.at(i).at(j)=        (senA.at(i)!=senB.at(j))      ?       getPreviousCost(i,j)+1      :       getPreviousCost(i,j);
+            Cost editingCosts;
+            switch(edits.at(i).at(j)) {
+                case INS: editingCosts=insertionCost; break;
+                case SUB: editingCosts=substitutionCost; break;
+                case DEL: editingCosts=deletionCost;break;
+                default: editingCosts=0; break;
+            }
+            distances.at(i).at(j)=getPreviousCost(i,j)+editingCosts;
         }
     }
 }

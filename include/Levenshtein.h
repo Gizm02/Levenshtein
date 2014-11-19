@@ -95,7 +95,7 @@ class Levenshtein
         void setSentences(const WordList& a, const WordList& b);
         void printDistanceMatrix();
         void printEditMatrix();
-
+        void countEditingOperations(Cost& insertions,Cost& deletion, Cost& substitutions);
         /** \brief Computes the word error rate for two given sentences based on the members sentenceA and sentenceB.
          * \param distance The distance between the words, i.e. their respective levenshtein-distance.
          * \param referenceSize The size of the reference string.

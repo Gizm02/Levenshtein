@@ -169,8 +169,11 @@ int main(int argc, char* argv[]){
 
 
     /************************************************************************************************************/
+
         Cost editingDistance=0; ///For task b), stores all Levenshtein-distances of every two compared sentences.
         size_t referenceSize=0;
+        size_t numOfInsertions=0, numOfDeletions=0, numOfSubstitutions=0;
+
     /************************************************************************************************************/
 
 
