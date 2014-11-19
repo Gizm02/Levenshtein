@@ -253,7 +253,7 @@ void Levenshtein::calculateDistance(const WordList& senA, const WordList& senB)
                 case INS: editingCosts=insertionCost; break;
                 case SUB: editingCosts=substitutionCost; break;
                 case DEL: editingCosts=deletionCost;break;
-                default: editingCosts=0; break;
+                default: editingCosts=0; break; ///case edits.at(i).at(j)==NO
             }
             distances.at(i).at(j)=getPreviousCost(i,j)+editingCosts;
         }
